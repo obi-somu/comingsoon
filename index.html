@@ -1,355 +1,539 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coming Soon</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mövenpick Malta | Coming Soon</title>
+
     <style>
+      :root {
+        --bg: #f3f0ea;
+        --gold: #8a6e3c;
+        --gold-soft: rgba(138, 110, 60, 0.72);
+        --gold-faint: rgba(138, 110, 60, 0.45);
+        --ink: #2b2b2b;
+        --pad: clamp(18px, 3vw, 44px);
+        --radius: 18px;
+      }
+
       * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
       }
-
+      html,
       body {
-        font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        overflow: hidden;
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       }
 
-      .container {
-        position: relative;
-        z-index: 2;
-      }
-
-      .coming-soon {
-        font-size: clamp(4rem, 15vw, 10rem);
-        font-weight: 900;
-        letter-spacing: 0.05em;
-        line-height: 0.85;
-        text-transform: uppercase;
-        margin-bottom: 1.5rem;
-        text-shadow: 0 0 30px rgba(218, 165, 32, 0.4),
-          0 0 60px rgba(218, 165, 32, 0.2);
-        background: linear-gradient(
-          to right,
-          #ffd700 0%,
-          #fdb931 20%,
-          #ffd700 40%,
-          #fdb931 60%,
-          #ffd700 80%,
-          #fdb931 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        background-size: 200% auto;
-        animation: shimmer 3s linear infinite;
-      }
-
-      @keyframes shimmer {
-        0% {
-          background-position: 0% center;
-        }
-        100% {
-          background-position: 200% center;
-        }
-      }
-
-      .subtitle {
-        font-size: clamp(1.2rem, 4vw, 1.8rem);
-        font-weight: 300;
-        opacity: 0.9;
-        max-width: 500px;
+      .page {
+        min-height: 100%;
+        max-width: 1100px;
         margin: 0 auto;
-        line-height: 1.4;
-        color: #ffd700;
-        text-shadow: 0 2px 10px rgba(218, 165, 32, 0.3);
-        letter-spacing: 0.1em;
+        padding: var(--pad);
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+        gap: clamp(18px, 3vw, 28px);
       }
 
-      /* Golden decorative elements */
-      .golden-circle {
+      /* Top brand block */
+      .top {
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding-top: clamp(6px, 1vw, 10px);
+      }
+
+      .logo {
+        color: var(--gold);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: clamp(26px, 3.3vw, 44px);
+        line-height: 1.05;
+      }
+
+      .logo small {
+        display: block;
+        margin-top: 8px;
+        font-size: clamp(12px, 1.2vw, 16px);
+        letter-spacing: 0.22em;
+        font-weight: 600;
+        color: var(--gold-soft);
+      }
+
+      .mark {
+        display: inline-block;
+        transform: translateY(-2px);
+        margin-left: 6px;
+        opacity: 0.95;
+      }
+
+      .headline {
+        margin-top: clamp(20px, 3vw, 34px);
+        color: var(--gold-soft);
+        font-size: clamp(34px, 5.2vw, 64px);
+        font-weight: 300;
+        line-height: 1.05;
+      }
+
+      /* Mid wave */
+      .mid {
+        position: relative;
+        min-height: 140px;
+      }
+
+      .wave {
         position: absolute;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle at center,
-          rgba(255, 215, 0, 0.2) 0%,
-          rgba(255, 215, 0, 0.1) 30%,
-          transparent 70%
-        );
-        pointer-events: none;
-        z-index: 1;
-        border: 1px solid rgba(255, 215, 0, 0.3);
+        left: calc(var(--pad) * -1);
+        top: 20px;
+        width: min(520px, 70vw);
+        height: 160px;
+        opacity: 0.45;
+        color: var(--gold-faint);
       }
 
-      .circle-1 {
-        width: 400px;
-        height: 400px;
-        top: -200px;
-        left: -200px;
-        animation: float 25s infinite ease-in-out;
+      /* Bottom content */
+      .bottom {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: clamp(18px, 3vw, 30px);
+        align-items: start;
+        padding-top: 8px;
       }
 
-      .circle-2 {
-        width: 300px;
-        height: 300px;
-        bottom: -150px;
-        right: -150px;
-        animation: float 30s infinite ease-in-out reverse;
-      }
-
-      .circle-3 {
-        width: 200px;
-        height: 200px;
-        top: 50%;
-        left: 80%;
-        animation: float 35s infinite ease-in-out;
-      }
-
-      .gold-line {
-        position: absolute;
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent 0%,
-          rgba(255, 215, 0, 0.8) 50%,
-          transparent 100%
-        );
-        width: 100%;
-        max-width: 600px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1;
-        opacity: 0.6;
-      }
-
-      .line-top {
-        top: -50px;
-      }
-
-      .line-bottom {
-        bottom: -50px;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0) rotate(0deg);
+      @media (max-width: 900px) {
+        .bottom {
+          grid-template-columns: 1fr;
         }
-        33% {
-          transform: translateY(-40px) rotate(120deg);
-        }
-        66% {
-          transform: translateY(40px) rotate(240deg);
+        .wave {
+          left: 0;
         }
       }
 
-      /* Footer */
-      .footer {
-        position: absolute;
-        bottom: 30px;
-        left: 0;
-        right: 0;
-        font-size: 0.9rem;
+      .divider {
+        grid-column: 1 / -1;
+        display: grid;
+        place-items: center;
+        margin: 6px 0 8px;
+      }
+
+      .diamonds {
+        width: min(520px, 85vw);
+        height: 22px;
+        color: var(--gold-soft);
         opacity: 0.7;
-        color: #ffd700;
-        font-family: "Segoe UI", sans-serif;
-        letter-spacing: 0.05em;
       }
 
-      /* Golden particles */
-      .particle {
+      .quote {
+        color: var(--gold-soft);
+        font-weight: 500;
+        font-size: clamp(18px, 2.3vw, 28px);
+        line-height: 1.25;
+        margin: 0 0 18px;
+      }
+
+      .textcols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        color: var(--gold-faint);
+        font-size: 13px;
+        line-height: 1.65;
+        max-width: 540px;
+      }
+
+      @media (max-width: 520px) {
+        .textcols {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .contact {
+        margin-top: 28px;
+        color: var(--gold-faint);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .social {
+        margin-top: 34px;
+        color: var(--gold-soft);
+      }
+
+      .social h3 {
+        margin: 0 0 10px;
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--gold-soft);
+      }
+
+      .icons {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .iconbtn {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        text-decoration: none;
+        color: var(--gold-soft);
+        border: 1px solid rgba(138, 110, 60, 0.22);
+        background: rgba(138, 110, 60, 0.05);
+        transition: transform 140ms ease, background 140ms ease;
+      }
+
+      .iconbtn:hover {
+        transform: translateY(-1px);
+        background: rgba(138, 110, 60, 0.08);
+      }
+
+      /* Photo panel to match template */
+      .photoWrap {
+        padding: 18px;
+        border-radius: var(--radius);
+        background: radial-gradient(
+          circle at 1px 1px,
+          rgba(138, 110, 60, 0.18) 1px,
+          transparent 1px
+        );
+        background-size: 10px 10px;
+        border: 1px solid rgba(138, 110, 60, 0.1);
+        justify-self: end;
+        width: min(420px, 100%);
+      }
+
+      .photo {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 14px;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(138, 110, 60, 0.16);
+      }
+
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(100%) contrast(1.05);
+      }
+
+      .finegrid {
+        display: grid;
+        gap: 8px;
+      }
+
+      /* Utility */
+      .muted {
+        color: var(--gold-faint);
+      }
+      .sr {
         position: absolute;
-        width: 3px;
-        height: 3px;
-        background: #ffd700;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 1;
-        opacity: 0;
-        box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.8);
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .coming-soon {
-          font-size: clamp(3rem, 12vw, 6rem);
-        }
-
-        .circle-1,
-        .circle-2,
-        .circle-3 {
-          display: none;
-        }
-
-        .gold-line {
-          max-width: 300px;
-        }
-      }
-
-      /* Optional: Add a subtle glow effect on hover */
-      .container:hover .coming-soon {
-        text-shadow: 0 0 40px rgba(218, 165, 32, 0.6),
-          0 0 80px rgba(218, 165, 32, 0.4), 0 0 120px rgba(218, 165, 32, 0.2);
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
       }
     </style>
   </head>
+
   <body>
-    <div class="golden-circle circle-1"></div>
-    <div class="golden-circle circle-2"></div>
-    <div class="golden-circle circle-3"></div>
+    <main class="page">
+      <!-- TOP -->
+      <section class="top" aria-label="Brand header">
+        <div class="logo" aria-label="Movenpick Hotels and Resorts">
+          MÖVENPICK
+          <span class="mark" aria-hidden="true">
+            <!-- small bird mark -->
+            <svg
+              width="34"
+              height="16"
+              viewBox="0 0 52 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 14c10-9 18-11 25-2 7 9 15 11 21 3"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          <small>HOTELS &amp; RESORTS</small>
+        </div>
 
-    <div class="gold-line line-top"></div>
-    <div class="gold-line line-bottom"></div>
+        <div class="headline">Coming to<br />Malta Soon</div>
+      </section>
 
-    <div class="container">
-      <h1 class="coming-soon">Coming<br />Soon</h1>
-      <p class="subtitle">Something extraordinary is in the making</p>
-    </div>
+      <!-- MID WAVE -->
+      <section class="mid" aria-label="Decorative wave">
+        <svg
+          class="wave"
+          viewBox="0 0 900 280"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="M0,160 C180,40 320,40 480,150 C630,255 750,255 900,160 L900,280 L0,280 Z"
+          ></path>
+          <path
+            fill="currentColor"
+            opacity="0.55"
+            d="M0,205 C210,130 330,130 505,205 C660,270 770,270 900,210 L900,280 L0,280 Z"
+          ></path>
+        </svg>
+      </section>
 
-    <div class="footer">Excellence • Prestige • Innovation</div>
+      <!-- BOTTOM -->
+      <section class="bottom" aria-label="Main content">
+        <div class="divider" aria-hidden="true">
+          <!-- Diamond divider -->
+          <svg
+            class="diamonds"
+            viewBox="0 0 600 30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g fill="currentColor">
+              <!-- small to large to small -->
+              <g opacity="0.55">
+                <rect
+                  x="40"
+                  y="12"
+                  width="6"
+                  height="6"
+                  transform="rotate(45 43 15)"
+                />
+                <rect
+                  x="58"
+                  y="11"
+                  width="8"
+                  height="8"
+                  transform="rotate(45 62 15)"
+                />
+                <rect
+                  x="80"
+                  y="10"
+                  width="10"
+                  height="10"
+                  transform="rotate(45 85 15)"
+                />
+                <rect
+                  x="106"
+                  y="9"
+                  width="12"
+                  height="12"
+                  transform="rotate(45 112 15)"
+                />
+                <rect
+                  x="136"
+                  y="8"
+                  width="14"
+                  height="14"
+                  transform="rotate(45 143 15)"
+                />
+                <rect
+                  x="170"
+                  y="7"
+                  width="16"
+                  height="16"
+                  transform="rotate(45 178 15)"
+                />
+                <rect
+                  x="208"
+                  y="6"
+                  width="18"
+                  height="18"
+                  transform="rotate(45 217 15)"
+                />
+                <rect
+                  x="250"
+                  y="5"
+                  width="20"
+                  height="20"
+                  transform="rotate(45 260 15)"
+                />
+                <rect
+                  x="296"
+                  y="4"
+                  width="22"
+                  height="22"
+                  transform="rotate(45 307 15)"
+                />
+                <rect
+                  x="346"
+                  y="5"
+                  width="20"
+                  height="20"
+                  transform="rotate(45 356 15)"
+                />
+                <rect
+                  x="392"
+                  y="6"
+                  width="18"
+                  height="18"
+                  transform="rotate(45 401 15)"
+                />
+                <rect
+                  x="434"
+                  y="7"
+                  width="16"
+                  height="16"
+                  transform="rotate(45 442 15)"
+                />
+                <rect
+                  x="472"
+                  y="8"
+                  width="14"
+                  height="14"
+                  transform="rotate(45 479 15)"
+                />
+                <rect
+                  x="506"
+                  y="9"
+                  width="12"
+                  height="12"
+                  transform="rotate(45 512 15)"
+                />
+                <rect
+                  x="536"
+                  y="10"
+                  width="10"
+                  height="10"
+                  transform="rotate(45 541 15)"
+                />
+                <rect
+                  x="562"
+                  y="11"
+                  width="8"
+                  height="8"
+                  transform="rotate(45 566 15)"
+                />
+                <rect
+                  x="582"
+                  y="12"
+                  width="6"
+                  height="6"
+                  transform="rotate(45 585 15)"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
 
-    <script>
-      // Create golden particles
-      function createParticles() {
-        const particlesContainer = document.createElement("div");
-        particlesContainer.style.position = "fixed";
-        particlesContainer.style.top = "0";
-        particlesContainer.style.left = "0";
-        particlesContainer.style.width = "100%";
-        particlesContainer.style.height = "100%";
-        particlesContainer.style.pointerEvents = "none";
-        particlesContainer.style.zIndex = "1";
-        document.body.appendChild(particlesContainer);
+        <!-- LEFT TEXT -->
+        <div class="finegrid">
+          <p class="quote">
+            “We simply do ordinary things<br />in an extraordinary way.”
+          </p>
 
-        for (let i = 0; i < 50; i++) {
-          const particle = document.createElement("div");
-          particle.classList.add("particle");
+          <div class="textcols">
+            <p>
+              The ethos of Mövenpick, established by Ueli Prager in 1948,
+              emphasizes making high quality food and drink accessible and
+              affordable for everyone. Innovations like à la carte dishes and
+              fine wines by the glass helped broaden its appeal.
+            </p>
+            <p>
+              Mövenpick redefined fine dining by blending enjoyment with
+              sophistication. This innovative approach has evolved into a
+              premium international hotel brand that emphasizes culinary
+              excellence and personal connection.
+            </p>
+          </div>
 
-          // Random position
-          const left = Math.random() * 100;
-          const top = Math.random() * 100;
+          <div class="contact">
+            <div>Tel: +356 2264 0000</div>
+            <div>info@movenpick.mt</div>
+          </div>
 
-          // Random animation delay
-          const delay = Math.random() * 5;
-          const duration = 3 + Math.random() * 4;
+          <div class="social">
+            <h3>Get social</h3>
+            <div class="icons" aria-label="Social links">
+              <a
+                class="iconbtn"
+                href="#"
+                aria-label="Facebook"
+                onclick="return false;"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M14 8.5V7c0-.8.5-1 1-1h2V3h-3c-2.8 0-4 1.8-4 4v1.5H8V12h2v9h4v-9h3l1-3.5h-4z"
+                  />
+                </svg>
+              </a>
+              <a
+                class="iconbtn"
+                href="#"
+                aria-label="Twitter"
+                onclick="return false;"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M18.9 2H22l-6.8 7.8L23 22h-6.6l-5.1-6.6L5.6 22H2.5l7.3-8.4L1 2h6.8l4.6 6L18.9 2zm-1.2 18h1.8L7.2 3.9H5.3L17.7 20z"
+                  />
+                </svg>
+              </a>
+              <a
+                class="iconbtn"
+                href="#"
+                aria-label="Instagram"
+                onclick="return false;"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A5.5 5.5 0 1 1 6.5 12 5.5 5.5 0 0 1 12 8.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 10.5zM18 6.8a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
 
-          particle.style.left = `${left}%`;
-          particle.style.top = `${top}%`;
-          particle.style.animation = `
-                    twinkle ${duration}s infinite ${delay}s
-                `;
-
-          particlesContainer.appendChild(particle);
-        }
-
-        // Add CSS for twinkle animation
-        const style = document.createElement("style");
-        style.textContent = `
-                @keyframes twinkle {
-                    0%, 100% {
-                        opacity: 0;
-                        transform: scale(0.5);
-                    }
-                    50% {
-                        opacity: 1;
-                        transform: scale(1.5);
-                    }
-                }
-            `;
-        document.head.appendChild(style);
-      }
-
-      // Add subtle sparkle effect to title
-      function addSparkleEffect() {
-        const title = document.querySelector(".coming-soon");
-
-        title.addEventListener("mouseenter", () => {
-          // Create temporary sparkles
-          for (let i = 0; i < 5; i++) {
-            const sparkle = document.createElement("div");
-            sparkle.style.position = "absolute";
-            sparkle.style.width = "20px";
-            sparkle.style.height = "20px";
-            sparkle.style.background =
-              "radial-gradient(circle, #FFD700 30%, transparent 70%)";
-            sparkle.style.borderRadius = "50%";
-            sparkle.style.pointerEvents = "none";
-            sparkle.style.zIndex = "3";
-
-            // Random position around title
-            const left = 30 + Math.random() * 40;
-            const top = 30 + Math.random() * 40;
-
-            sparkle.style.left = `${left}%`;
-            sparkle.style.top = `${top}%`;
-
-            // Animation
-            sparkle.style.animation = `sparkle 0.8s ease-out forwards`;
-
-            document.querySelector(".container").appendChild(sparkle);
-
-            // Remove after animation
-            setTimeout(() => {
-              sparkle.remove();
-            }, 800);
-          }
-
-          // Add sparkle animation
-          if (!document.querySelector("#sparkle-animation")) {
-            const sparkleStyle = document.createElement("style");
-            sparkleStyle.id = "sparkle-animation";
-            sparkleStyle.textContent = `
-                        @keyframes sparkle {
-                            0% {
-                                opacity: 0;
-                                transform: scale(0.5);
-                            }
-                            50% {
-                                opacity: 1;
-                                transform: scale(1.2);
-                            }
-                            100% {
-                                opacity: 0;
-                                transform: scale(0.5);
-                            }
-                        }
-                    `;
-            document.head.appendChild(sparkleStyle);
-          }
-        });
-      }
-
-      // Initialize everything when page loads
-      document.addEventListener("DOMContentLoaded", function () {
-        createParticles();
-        addSparkleEffect();
-
-        // Optional: Add typing effect to subtitle
-        const subtitle = document.querySelector(".subtitle");
-        const originalText = subtitle.textContent;
-        subtitle.textContent = "";
-
-        let i = 0;
-        function typeWriter() {
-          if (i < originalText.length) {
-            subtitle.textContent += originalText.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50);
-          }
-        }
-
-        // Start typing after a short delay
-        setTimeout(typeWriter, 1000);
-      });
-    </script>
+        <!-- RIGHT IMAGE -->
+        <div class="photoWrap" aria-label="Heritage photo panel">
+          <div class="photo">
+            <!-- Replace this with your real image path -->
+            <img
+              src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=70"
+              alt="Historic dining scene"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
