@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coming Soon</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        overflow: hidden;
+      }
+
+      .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .coming-soon {
+        font-size: clamp(4rem, 15vw, 10rem);
+        font-weight: 900;
+        letter-spacing: 0.05em;
+        line-height: 0.85;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 0 30px rgba(218, 165, 32, 0.4),
+          0 0 60px rgba(218, 165, 32, 0.2);
+        background: linear-gradient(
+          to right,
+          #ffd700 0%,
+          #fdb931 20%,
+          #ffd700 40%,
+          #fdb931 60%,
+          #ffd700 80%,
+          #fdb931 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-size: 200% auto;
+        animation: shimmer 3s linear infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: 0% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
+      }
+
+      .subtitle {
+        font-size: clamp(1.2rem, 4vw, 1.8rem);
+        font-weight: 300;
+        opacity: 0.9;
+        max-width: 500px;
+        margin: 0 auto;
+        line-height: 1.4;
+        color: #ffd700;
+        text-shadow: 0 2px 10px rgba(218, 165, 32, 0.3);
+        letter-spacing: 0.1em;
+      }
+
+      /* Golden decorative elements */
+      .golden-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at center,
+          rgba(255, 215, 0, 0.2) 0%,
+          rgba(255, 215, 0, 0.1) 30%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 1;
+        border: 1px solid rgba(255, 215, 0, 0.3);
+      }
+
+      .circle-1 {
+        width: 400px;
+        height: 400px;
+        top: -200px;
+        left: -200px;
+        animation: float 25s infinite ease-in-out;
+      }
+
+      .circle-2 {
+        width: 300px;
+        height: 300px;
+        bottom: -150px;
+        right: -150px;
+        animation: float 30s infinite ease-in-out reverse;
+      }
+
+      .circle-3 {
+        width: 200px;
+        height: 200px;
+        top: 50%;
+        left: 80%;
+        animation: float 35s infinite ease-in-out;
+      }
+
+      .gold-line {
+        position: absolute;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(255, 215, 0, 0.8) 50%,
+          transparent 100%
+        );
+        width: 100%;
+        max-width: 600px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        opacity: 0.6;
+      }
+
+      .line-top {
+        top: -50px;
+      }
+
+      .line-bottom {
+        bottom: -50px;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        33% {
+          transform: translateY(-40px) rotate(120deg);
+        }
+        66% {
+          transform: translateY(40px) rotate(240deg);
+        }
+      }
+
+      /* Footer */
+      .footer {
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+        font-size: 0.9rem;
+        opacity: 0.7;
+        color: #ffd700;
+        font-family: "Segoe UI", sans-serif;
+        letter-spacing: 0.05em;
+      }
+
+      /* Golden particles */
+      .particle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: #ffd700;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0;
+        box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.8);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .coming-soon {
+          font-size: clamp(3rem, 12vw, 6rem);
+        }
+
+        .circle-1,
+        .circle-2,
+        .circle-3 {
+          display: none;
+        }
+
+        .gold-line {
+          max-width: 300px;
+        }
+      }
+
+      /* Optional: Add a subtle glow effect on hover */
+      .container:hover .coming-soon {
+        text-shadow: 0 0 40px rgba(218, 165, 32, 0.6),
+          0 0 80px rgba(218, 165, 32, 0.4), 0 0 120px rgba(218, 165, 32, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="golden-circle circle-1"></div>
+    <div class="golden-circle circle-2"></div>
+    <div class="golden-circle circle-3"></div>
+
+    <div class="gold-line line-top"></div>
+    <div class="gold-line line-bottom"></div>
+
+    <div class="container">
+      <h1 class="coming-soon">Coming<br />Soon</h1>
+      <p class="subtitle">Something extraordinary is in the making</p>
+    </div>
+
+    <div class="footer">Excellence • Prestige • Innovation</div>
+
+    <script>
+      // Create golden particles
+      function createParticles() {
+        const particlesContainer = document.createElement("div");
+        particlesContainer.style.position = "fixed";
+        particlesContainer.style.top = "0";
+        particlesContainer.style.left = "0";
+        particlesContainer.style.width = "100%";
+        particlesContainer.style.height = "100%";
+        particlesContainer.style.pointerEvents = "none";
+        particlesContainer.style.zIndex = "1";
+        document.body.appendChild(particlesContainer);
+
+        for (let i = 0; i < 50; i++) {
+          const particle = document.createElement("div");
+          particle.classList.add("particle");
+
+          // Random position
+          const left = Math.random() * 100;
+          const top = Math.random() * 100;
+
+          // Random animation delay
+          const delay = Math.random() * 5;
+          const duration = 3 + Math.random() * 4;
+
+          particle.style.left = `${left}%`;
+          particle.style.top = `${top}%`;
+          particle.style.animation = `
+                    twinkle ${duration}s infinite ${delay}s
+                `;
+
+          particlesContainer.appendChild(particle);
+        }
+
+        // Add CSS for twinkle animation
+        const style = document.createElement("style");
+        style.textContent = `
+                @keyframes twinkle {
+                    0%, 100% {
+                        opacity: 0;
+                        transform: scale(0.5);
+                    }
+                    50% {
+                        opacity: 1;
+                        transform: scale(1.5);
+                    }
+                }
+            `;
+        document.head.appendChild(style);
+      }
+
+      // Add subtle sparkle effect to title
+      function addSparkleEffect() {
+        const title = document.querySelector(".coming-soon");
+
+        title.addEventListener("mouseenter", () => {
+          // Create temporary sparkles
+          for (let i = 0; i < 5; i++) {
+            const sparkle = document.createElement("div");
+            sparkle.style.position = "absolute";
+            sparkle.style.width = "20px";
+            sparkle.style.height = "20px";
+            sparkle.style.background =
+              "radial-gradient(circle, #FFD700 30%, transparent 70%)";
+            sparkle.style.borderRadius = "50%";
+            sparkle.style.pointerEvents = "none";
+            sparkle.style.zIndex = "3";
+
+            // Random position around title
+            const left = 30 + Math.random() * 40;
+            const top = 30 + Math.random() * 40;
+
+            sparkle.style.left = `${left}%`;
+            sparkle.style.top = `${top}%`;
+
+            // Animation
+            sparkle.style.animation = `sparkle 0.8s ease-out forwards`;
+
+            document.querySelector(".container").appendChild(sparkle);
+
+            // Remove after animation
+            setTimeout(() => {
+              sparkle.remove();
+            }, 800);
+          }
+
+          // Add sparkle animation
+          if (!document.querySelector("#sparkle-animation")) {
+            const sparkleStyle = document.createElement("style");
+            sparkleStyle.id = "sparkle-animation";
+            sparkleStyle.textContent = `
+                        @keyframes sparkle {
+                            0% {
+                                opacity: 0;
+                                transform: scale(0.5);
+                            }
+                            50% {
+                                opacity: 1;
+                                transform: scale(1.2);
+                            }
+                            100% {
+                                opacity: 0;
+                                transform: scale(0.5);
+                            }
+                        }
+                    `;
+            document.head.appendChild(sparkleStyle);
+          }
+        });
+      }
+
+      // Initialize everything when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        createParticles();
+        addSparkleEffect();
+
+        // Optional: Add typing effect to subtitle
+        const subtitle = document.querySelector(".subtitle");
+        const originalText = subtitle.textContent;
+        subtitle.textContent = "";
+
+        let i = 0;
+        function typeWriter() {
+          if (i < originalText.length) {
+            subtitle.textContent += originalText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+          }
+        }
+
+        // Start typing after a short delay
+        setTimeout(typeWriter, 1000);
+      });
+    </script>
+  </body>
+</html>
